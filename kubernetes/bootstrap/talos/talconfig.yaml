@@ -6,13 +6,13 @@ talosVersion: v1.6.5
 kubernetesVersion: v1.29.2
 
 clusterName: &cluster home-kubernetes
-endpoint: https://192.168.50.100:6443
+endpoint: https://192.168.30.100:6443
 clusterPodNets:
   - "10.69.0.0/16"
 clusterSvcNets:
   - "10.96.0.0/16"
 additionalApiServerCertSans: &sans
-  - "192.168.50.100"
+  - "192.168.30.100"
   - 127.0.0.1 # KubePrism
 additionalMachineCertSans: *sans
 cniConfig:
@@ -20,49 +20,49 @@ cniConfig:
 
 nodes:
   - hostname: "talos1"
-    ipAddress: "192.168.50.10"
+    ipAddress: "192.168.30.167"
     installDisk: "/dev/sda"
-    talosImageURL: factory.talos.dev/installer/7d4c31cbd96db9f90c874990697c523482b2bae27fb4631d5583dcd9c281b1ff
+    talosImageURL: factory.talos.dev/installer/449dd8083ffaba8d333da5dac4fe5e8bae56a31f10da23affcfbc8f696571d62
     controlPlane: true
     networkInterfaces:
       - interface: eth0
         dhcp: false
         addresses:
-          - "192.168.50.10/24"
+          - "192.168.30.167/24"
         mtu: 1500
         routes:
           - network: 0.0.0.0/0
-            gateway: "192.168.50.1"
+            gateway: "192.168.30.1"
         vip:
-          ip: "192.168.50.100"
+          ip: "192.168.30.100"
   - hostname: "talos2"
-    ipAddress: "192.168.50.11"
+    ipAddress: "192.168.30.169"
     installDisk: "/dev/sda"
-    talosImageURL: factory.talos.dev/installer/7d4c31cbd96db9f90c874990697c523482b2bae27fb4631d5583dcd9c281b1ff
-    controlPlane: 
+    talosImageURL: factory.talos.dev/installer/449dd8083ffaba8d333da5dac4fe5e8bae56a31f10da23affcfbc8f696571d62
+    controlPlane: true
     networkInterfaces:
       - interface: eth0
         dhcp: false
         addresses:
-          - "192.168.50.11/24"
+          - "192.168.30.169/24"
         mtu: 1500
         routes:
           - network: 0.0.0.0/0
-            gateway: "192.168.50.1"
+            gateway: "192.168.30.1"
   - hostname: "talos3"
-    ipAddress: "192.168.50.12"
-    installDisk: "/dev/sda"
-    talosImageURL: factory.talos.dev/installer/7d4c31cbd96db9f90c874990697c523482b2bae27fb4631d5583dcd9c281b1ff
-    controlPlane: 
+    ipAddress: "192.168.30.168"
+    installDisk: "/dev/nvme0n1"
+    talosImageURL: factory.talos.dev/installer/449dd8083ffaba8d333da5dac4fe5e8bae56a31f10da23affcfbc8f696571d62
+    controlPlane: true
     networkInterfaces:
       - interface: eth0
         dhcp: false
         addresses:
-          - "192.168.50.12/24"
+          - "192.168.30.168/24"
         mtu: 1500
         routes:
           - network: 0.0.0.0/0
-            gateway: "192.168.50.1"
+            gateway: "192.168.30.1"
 
 patches:
   # Configure containerd
@@ -106,7 +106,7 @@ patches:
           rotate-server-certificates: true
         nodeIP:
           validSubnets:
-            - "192.168.50.0/24"
+            - "192.168.30.0/24"
 
   # Force nameserver
   - |-
@@ -174,7 +174,7 @@ controlPlane:
           extraArgs:
             listen-metrics-urls: http://0.0.0.0:2381
           advertisedSubnets:
-            - "192.168.50.0/24"
+            - "192.168.30.0/24"
 
     # Disable default API server admission plugins.
     - |-
