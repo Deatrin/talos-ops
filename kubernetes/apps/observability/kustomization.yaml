@@ -12,5 +12,5 @@ resources:
   # - ./grafana/ks.yaml
   # - ./kube-prometheus-stack/ks.yaml
   - ./smartctl-exporter/ks.yaml
-  - ./thanos/ks.yaml
+  # - ./thanos/ks.yaml
   - ./unpoller/ks.yaml
