@@ -44,17 +44,6 @@ spec:
         tls:
           - hosts:
               - *host
-      internal:
-        enabled: true
-        className: internal
-        hosts:
-          - host: &host "{{ .Release.Name }}-internal.jennex.dev"
-            paths:
-              - path: /
-                pathType: prefix
-        tls:
-          - hosts:
-            - *host
 
     networkPolicy:
       create: false
