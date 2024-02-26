@@ -1,9 +1,10 @@
 ---
-# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/helm.toolkit.fluxcd.io/helmrelease_v2beta2.json
+# yaml-language-server: $schema=https://kubernetes-schemas.devbu.io/helm.toolkit.fluxcd.io/helmrelease_v2beta1.json
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
   name: cloudnative-pg
+  namespace: database
 spec:
   interval: 30m
   chart:
@@ -14,6 +15,7 @@ spec:
         kind: HelmRepository
         name: cloudnative-pg
         namespace: flux-system
+  maxHistory: 2
   install:
     remediation:
       retries: 3
@@ -23,13 +25,12 @@ spec:
       retries: 3
   uninstall:
     keepHistory: false
-  dependsOn:
-    - name: openebs
-      namespace: openebs-system
+  # dependsOn:
+  #   - name: local-path-provisioner
+  #     namespace: kube-system
   values:
     crds:
       create: true
-    monitoring:
-      podMonitorEnabled: false
-      grafanaDashboard:
-        create: true
+    config:
+      data:
+        INHERITED_ANNOTATIONS: kyverno.io/ignore
