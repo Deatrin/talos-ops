@@ -29,8 +29,8 @@ spec:
   dependsOn:
     - name: openebs
       namespace: openebs-system
-    - name: thanos
-      namespace: observability
+    # - name: thanos
+    #   namespace: observability
   values:
     crds:
       enabled: true
@@ -41,7 +41,7 @@ spec:
         pathType: Prefix
         ingressClassName: internal
         hosts:
-          - &host alertmanager.devbu.io
+          - &host alertmanager.jennex.dev
         tls:
           - hosts:
               - *host
@@ -82,9 +82,9 @@ spec:
     kubeControllerManager:
       enabled: true
       endpoints: &cp
-        - 192.168.42.10
-        - 192.168.42.11
-        - 192.168.42.12
+        - 192.168.30.167
+        - 192.168.30.168
+        - 192.168.30.169
     kubeEtcd:
       enabled: true
       endpoints: *cp
@@ -99,14 +99,14 @@ spec:
         ingressClassName: internal
         pathType: Prefix
         hosts:
-          - &host prometheus.devbu.io
+          - &host prometheus.jennex.dev
         tls:
           - hosts:
               - *host
-      thanosService:
-        enabled: true
-      thanosServiceMonitor:
-        enabled: true
+      # thanosService:
+      #   enabled: true
+      # thanosServiceMonitor:
+      #   enabled: true
       prometheusSpec:
         replicas: 2
         replicaExternalLabelName: __replica__
@@ -121,13 +121,13 @@ spec:
           - auto-gomaxprocs
           - memory-snapshot-on-shutdown
           - new-service-discovery-manager
-        thanos:
-          image: quay.io/thanos/thanos:${THANOS_VERSION}
-          version: "${THANOS_VERSION#v}"
-          objectStorageConfig:
-            existingSecret:
-              name: thanos-objstore-secret
-              key: objstore.yml
+        # thanos:
+        #   image: quay.io/thanos/thanos:${THANOS_VERSION}
+        #   version: "${THANOS_VERSION#v}"
+        #   objectStorageConfig:
+        #     existingSecret:
+        #       name: thanos-objstore-secret
+        #       key: objstore.yml
         retention: 2d
         retentionSize: 15GB
         externalLabels:
