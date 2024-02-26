@@ -40,9 +40,7 @@ spec:
           - host: &host "{{ .Release.Name }}-external.jennex.dev"
             paths:
               - path: /
-                service:
-                  name: main
-                  port: http
+                pathType: prefix
         tls:
           - hosts:
               - *host
@@ -53,9 +51,7 @@ spec:
           - host: &host "{{ .Release.Name }}-internal.jennex.dev"
             paths:
               - path: /
-                service:
-                  name: main
-                  port: http
+                pathType: prefix
         tls:
           - hosts:
             - *host
