@@ -117,7 +117,7 @@ spec:
         annotations:
           external-dns.alpha.kubernetes.io/target: external.jennex.dev
         hosts:
-          - host: &host status.devbu.io
+          - host: &host status.jennex.dev
             paths:
               - path: /
                 service:
