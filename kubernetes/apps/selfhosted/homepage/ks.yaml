@@ -6,13 +6,13 @@ metadata:
   name: &app homepage
   namespace: flux-system
 spec:
-  targetNamespace: default
+  targetNamespace: selfhosted
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
   dependsOn:
-    - name: external-secrets-bitwarden-secrets-manager
-  path: ./kubernetes/teyvat/apps/default/homepage/app
+    - name: external-secrets-stores
+  path: ./kubernetes/apps/selfhosted/homepage/app
   prune: true
   sourceRef:
     kind: GitRepository

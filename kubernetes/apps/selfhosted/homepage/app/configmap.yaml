@@ -24,19 +24,7 @@ data:
         - YouTube:
             - icon: youtube.png
               href: 'https://youtube.com/feed/subscriptions'
-        - Spotify:
-            - icon: spotify.png
-              href: 'http://open.spotify.com'
-        - Youtube Music:
-            - icon: https://raw.githubusercontent.com/LilDrunkenSmurf/k3s-home-cluster/main/icons/youtube-music.png
-              href: 'https://music.youtube.com'
     - Reading:
-        - Beyond:
-            - icon: https://raw.githubusercontent.com/LilDrunkenSmurf/k3s-home-cluster/main/icons/beyond.png
-              href: 'https://forums.beyond.ca/search.php?do=getnew&contenttype=vBForum_Post'
-        - Western Subaru Club:
-            - icon: https://raw.githubusercontent.com/LilDrunkenSmurf/k3s-home-cluster/main/icons/wsc.png
-              href: 'http://westernsubaruclub.com/smf/index.php?action=unread'
         - Reddit:
             - icon: reddit.png
               href: 'https://reddit.com'
@@ -46,7 +34,7 @@ data:
               href: 'https://kubesearch.dev/'
         - k3s-home-cluster:
             - icon: github.png
-              href: 'https://github.com/LilDrunkenSmurf/k3s-home-cluster'
+              href: 'https://github.com/Deatrin/talos-ops'
   docker.yaml: ""
   kubernetes.yaml: |
     mode: cluster
@@ -83,14 +71,14 @@ data:
                 - type: readarr # active widget type that is currently enabled on homepage - possible values: radarr, sonar>
                   service_group: Downloads # group name where widget exists
                   service_name: Readarr # service name for that widget
-    - Media:
-        - Tdarr:
-            href: &url https://tdarr.${PI_DOMAIN}
-            icon: tdarr.png
-            description: Media Transcoding
-            widget:
-              type: tdarr
-              url: *url
+    # - Media:
+    #     - Tdarr:
+    #         href: &url https://tdarr.${PI_DOMAIN}
+    #         icon: tdarr.png
+    #         description: Media Transcoding
+    #         widget:
+    #           type: tdarr
+    #           url: *url
     - Infrastructure:
         - Cloudflared:
             href: https://dash.cloudflare.com/
@@ -110,54 +98,34 @@ data:
               url: https://192.168.1.1:443
               username: {{HOMEPAGE_VAR_UNIFI_USERNAME}}
               password: {{HOMEPAGE_VAR_UNIFI_PASSWORD}}
-        - MeshCentral:
-            href: https://mesh.${PI_DOMAIN}
-            icon: meshcentral.png
-            description: MeshCentral Dashboard
-        - NextDNS:
-            href: https://my.nextdns.io
-            icon: nextdns.png
-            description: NextDNS
-            widget:
-              type: nextdns
-              profile: {{HOMEPAGE_VAR_NEXTDNS_ID}}
-              key: {{HOMEPAGE_VAR_NEXTDNS_API}}
-        - Portainer:
-            href: &url https://portainer.${PI_DOMAIN}
-            icon: portainer.png
-            description: Docker Container Management
-            widget:
-              type: portainer
-              url: *url
-              env: 1
-              key: {{HOMEPAGE_VAR_PORTAINER_TOKEN}}
-    - Storage:
-        - Unraid:
-            href: https://nas.${PI_DOMAIN}
-            icon: unraid.png
-            description: Unraid NAS
-    - Minecraft:
-        - Vibecraft:
-            icon: minecraft.png
-            widget:
-              type: minecraft
-              url: udp://${NAS_IP}:25565
-        - Skyblock:
-            icon: minecraft.png
-            widget:
-              type: minecraft
-              url: udp://${NAS_IP}:25566
-        - Create:
-            icon: minecraft.png
-            widget:
-              type: minecraft
-              url: udp://${NAS_IP}:25567
+        # - NextDNS:
+        #     href: https://my.nextdns.io
+        #     icon: nextdns.png
+        #     description: NextDNS
+        #     widget:
+        #       type: nextdns
+        #       profile: {{HOMEPAGE_VAR_NEXTDNS_ID}}
+        #       key: {{HOMEPAGE_VAR_NEXTDNS_API}}
+        # - Portainer:
+        #     href: &url https://portainer.${PI_DOMAIN}
+        #     icon: portainer.png
+        #     description: Docker Container Management
+        #     widget:
+        #       type: portainer
+        #       url: *url
+        #       env: 1
+        #       key: {{HOMEPAGE_VAR_PORTAINER_TOKEN}}
+    # - Storage:
+    #     - Unraid:
+    #         href: https://nas.${PI_DOMAIN}
+    #         icon: unraid.png
+    #         description: Unraid NAS
   settings.yaml: |
     title: Dashboard
     favicon: https://github.com/walkxcode/dashboard-icons/blob/main/png/heimdall.png
     theme: dark
     background:
-      image: https://raw.githubusercontent.com/smbonn2005/homeops/main/icons/moon.jpg
+      image: https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?q=80&w=3313&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
       opacity: 50
     color: slate
     headerStyle: clean
@@ -165,27 +133,27 @@ data:
       Calendar:
         style: column
         icon: mdi-calendar
-      Media:
-        style: column
-        icon: mdi-play-circle
+      # Media:
+      #   style: column
+      #   icon: mdi-play-circle
       Infrastructure:
         style: row
         columns: 3
         icon: mdi-server
-      Storage:
-        style: row
-        columns: 2
-        icon: mdi-desktop-tower
+      # Storage:
+      #   style: row
+      #   columns: 2
+      #   icon: mdi-desktop-tower
       Home:
         style: column
         icon: mdi-home-analytics
-      Observability:
-        style: column
-        icon: mdi-chart-line
-      Minecraft:
-        style: row
-        columns: 3
-        icon: mdi-minecraft
+      # Observability:
+      #   style: column
+      #   icon: mdi-chart-line
+      # Minecraft:
+      #   style: row
+      #   columns: 3
+      #   icon: mdi-minecraft
       Downloads:
         style: row
         columns: 3
@@ -222,15 +190,10 @@ data:
           showLabel: true
     - openmeteo:
         label: Home
-        latitude: ${LATITUDE}
-        longitude: ${LONGITUDE}
-        units: metric
+        latitude: ${HOMEPAGE_VAR_LATITUDE}
+        longitude: ${HOMEPAGE_VAR_LONGITUDE}
+        units: imperial
         cache: 5
-    # - longhorn:
-    #     expanded: false
-    #     total: true
-    #     labels: true
-    #     nodes: false
     - datetime:
         text_size: l
         format:
