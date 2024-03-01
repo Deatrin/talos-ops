@@ -24,13 +24,13 @@ rules:
     verbs:
       - get
       - list
-  - apiGroups:
-      - traefik.containo.us
-    resources:
-      - ingressroutes
-    verbs:
-      - get
-      - list
+  # - apiGroups:
+  #     - traefik.containo.us
+  #   resources:
+  #     - ingressroutes
+  #   verbs:
+  #     - get
+  #     - list
   - apiGroups:
       - metrics.k8s.io
     resources:
@@ -60,4 +60,4 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: *app
-    namespace: default # keep
+    namespace: selfhosted # keep
