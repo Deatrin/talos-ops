@@ -23,11 +23,11 @@ spec:
       retries: 3
   uninstall:
     keepHistory: false
-  dependsOn:
-    - name: rook-ceph-cluster
-      namespace: rook-ceph
-    - name: volsync
-      namespace: volsync-system
+  # dependsOn:
+  #   - name: rook-ceph-cluster
+  #     namespace: rook-ceph
+  #   - name: volsync
+  #     namespace: volsync-system
   values:
     controllers:
       main:
@@ -39,7 +39,7 @@ spec:
               repository: ghcr.io/onedr0p/sabnzbd
               tag: 4.2.2@sha256:5b1f15c8d25afa2342505492486361d4ecf14449e1453aeea45cd7c1e5eeb63a
             env:
-              TZ: America/New_York
+              TZ: America/Los_Angeles
               SABNZBD__PORT: &port 80
               SABNZBD__HOST_WHITELIST_ENTRIES: >-
                 sabnzbd,
@@ -47,8 +47,8 @@ spec:
                 sabnzbd.default.svc,
                 sabnzbd.default.svc.cluster,
                 sabnzbd.default.svc.cluster.local,
-                sab.devbu.io,
-                sabnzbd.devbu.io
+                sab.jennex.dev,
+                sabnzbd.jennex.dev
             envFrom:
               - secretRef:
                   name: sabnzbd-secret
@@ -93,8 +93,18 @@ spec:
       main:
         enabled: true
         className: internal
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/group: Media
+          gethomepage.dev/name: Sabnzbd
+          gethomepage.dev/icon: sabnzbd.png
+          gethomepage.dev/description: NZB Downloader
+          nginx.ingress.kubernetes.io/configuration-snippet: |
+            proxy_set_header Accept-Encoding "";
+            sub_filter '</head>' '<link rel="stylesheet" type="text/css" href="https://theme-park.jennex.io/css/base/sabnzbd/dracula.css"></head>';
+            sub_filter_once on;
         hosts:
-          - host: &host sab.devbu.io
+          - host: &host sab.jennex.dev
             paths:
               - path: /
                 service:
@@ -106,12 +116,11 @@ spec:
     persistence:
       config:
         enabled: true
-        existingClaim: sabnzbd
+        existingClaim: sabnzbd-config
       tmp:
         type: emptyDir
       media:
-        type: nfs
-        server: expanse.turbo.ac
-        path: /eros/Media
+        enabled: true
+        existingClaim: media-nfs
         globalMounts:
           - path: /media
