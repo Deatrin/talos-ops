@@ -48,7 +48,7 @@ spec:
               PROWLARR__LOG_LEVEL: info
               PROWLARR__AUTHENTICATION_METHOD: External
               PROWLARR__THEME: dark
-              TZ: America/New_York
+              TZ: America/Los_Angeles
             envFrom: *envFrom
             probes:
               liveness: &probes
@@ -91,7 +91,7 @@ spec:
         enabled: true
         className: internal
         hosts:
-          - host: &host "{{ .Release.Name }}.devbu.io"
+          - host: &host "{{ .Release.Name }}.jennex.dev"
             paths:
               - path: /
                 service:
