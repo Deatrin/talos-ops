@@ -90,6 +90,12 @@ spec:
       main:
         enabled: true
         className: internal
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/group: Media
+          gethomepage.dev/name: Prowlarr
+          gethomepage.dev/icon: prowlarr.png
+          gethomepage.dev/description: Indexer
         hosts:
           - host: &host "{{ .Release.Name }}.jennex.dev"
             paths:
