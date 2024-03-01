@@ -2,10 +2,12 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: radarr
+  name: radarr-config
+  namespace: media
 spec:
-  accessModes: ["ReadWriteMany"]
+  accessModes:
+    - ReadWriteMany
+  storageClassName: nfs-client-pvc
   resources:
     requests:
       storage: 15Gi
-  storageClassName: ceph-filesystem
