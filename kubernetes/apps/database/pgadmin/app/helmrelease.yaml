@@ -72,7 +72,7 @@ spec:
           gethomepage.dev/group: Infrastructure
           gethomepage.dev/name: pgAdmin
           gethomepage.dev/icon: mdi-database
-          gethomepage.dev/description: Movies
+          gethomepage.dev/description: dbm
         hosts:
           - host: &host "{{ .Release.Name }}.jennex.dev"
             paths:
