@@ -3,7 +3,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: pgadmin-config
-  namespace: databse
+  namespace: database
 spec:
   accessModes:
     - ReadWriteMany
