@@ -33,6 +33,12 @@ spec:
     ingress:
       enabled: true
       className: internal
+      annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/group: Infrastructure
+          gethomepage.dev/name: Weave-gitops
+          gethomepage.dev/icon: mdi-sawtooth-wave
+          gethomepage.dev/description: A simple, fast, and easy way to create and share recipes
       hosts:
         - host: &host "gitops.${SECRET_DOMAIN}"
           paths:

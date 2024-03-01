@@ -90,7 +90,7 @@ spec:
         className: internal
         annotations:
           gethomepage.dev/enabled: "true"
-          gethomepage.dev/group: selfhosted
+          gethomepage.dev/group: Selfhosted
           gethomepage.dev/name: Mealie
           gethomepage.dev/icon: mealie.png
           gethomepage.dev/description: A simple, fast, and easy way to create and share recipes

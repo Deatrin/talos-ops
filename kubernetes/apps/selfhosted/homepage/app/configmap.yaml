@@ -112,7 +112,8 @@ data:
         #       url: *url
         #       env: 1
         #       key: {{HOMEPAGE_VAR_PORTAINER_TOKEN}}
-    - Selfhosted:
+
+    # - Selfhosted:
 
     # - Storage:
     #     - Unraid:
