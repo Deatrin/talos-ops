@@ -130,9 +130,9 @@ data:
       Calendar:
         style: column
         icon: mdi-calendar
-      # Media:
-      #   style: column
-      #   icon: mdi-play-circle
+      Media:
+        style: column
+        icon: mdi-play-circle
       Infrastructure:
         style: row
         columns: 3
@@ -151,6 +151,10 @@ data:
       #   style: row
       #   columns: 3
       #   icon: mdi-minecraft
+      Selfhosted:
+        style: row
+        columns: 3
+        icon: selfhosted.png
       Downloads:
         style: row
         columns: 3
