@@ -113,8 +113,6 @@ data:
         #       env: 1
         #       key: {{HOMEPAGE_VAR_PORTAINER_TOKEN}}
 
-    - Selfhosted:
-
     # - Storage:
     #     - Unraid:
     #         href: https://nas.${PI_DOMAIN}
