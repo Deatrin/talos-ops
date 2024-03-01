@@ -53,7 +53,7 @@ spec:
               SONARR__PORT: &port 80
               SONARR__LOG_LEVEL: info
               SONARR__THEME: dark
-              TZ: America/New_York
+              TZ: America/Los_Angeles
             envFrom: *envFrom
             probes:
               liveness: &probes
