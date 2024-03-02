@@ -93,13 +93,13 @@ spec:
         nodes:
           - name: "talos1"
             devices:
-              - name: "/dev/disk/by-id/ata-Samsung_SSD_870_EVO_500GB_S6PXNU0X108050W"
+              - name: "/dev/sdb"
           - name: "talos2"
             devices:
-              - name: "/dev/disk/by-id/ata-Samsung_SSD_870_EVO_500GB_S6PXNU0X109720N"
+              - name: "/dev/sdb"
           - name: "talos3"
             devices:
-              - name: "/dev/disk/by-id/ata-Samsung_SSD_870_EVO_500GB_S6PXNU0X112843D"
+              - name: "/dev/sdb"
       placement:
         mgr: &placement
           nodeAffinity:
