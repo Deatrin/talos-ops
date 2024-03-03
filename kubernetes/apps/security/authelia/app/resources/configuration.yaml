@@ -5,7 +5,7 @@ authentication_backend:
     disable: true
   refresh_interval: 1m
   ldap:
-    address: ldap://lldap.default.svc.cluster.local:389
+    address: ldap://lldap.security.svc.cluster.local:389
     implementation: custom
     timeout: 5s
     start_tls: false
@@ -50,7 +50,7 @@ session:
 notifier:
   disable_startup_check: true
   smtp:
-    address: smtp-relay.default.svc.cluster.local:25
+    address: smtp-relay.security.svc.cluster.local:25
     sender: Authelia <authelia@jennex.io>
     disable_require_tls: true
 
