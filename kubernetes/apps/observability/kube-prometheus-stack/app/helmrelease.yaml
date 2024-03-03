@@ -41,7 +41,7 @@ spec:
         pathType: Prefix
         ingressClassName: internal
         hosts:
-          - &host alertmanager.devbu.io
+          - &host alertmanager.jennex.dev
         tls:
           - hosts:
               - *host
@@ -82,9 +82,9 @@ spec:
     kubeControllerManager:
       enabled: true
       endpoints: &cp
-        - 192.168.42.10
-        - 192.168.42.11
-        - 192.168.42.12
+        - 192.168.50.5
+        - 192.168.50.6
+        - 192.168.50.7
     kubeEtcd:
       enabled: true
       endpoints: *cp
@@ -99,7 +99,7 @@ spec:
         ingressClassName: internal
         pathType: Prefix
         hosts:
-          - &host prometheus.devbu.io
+          - &host prometheus.jennex.dev
         tls:
           - hosts:
               - *host
