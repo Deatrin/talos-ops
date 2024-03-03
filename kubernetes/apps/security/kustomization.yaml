@@ -7,3 +7,4 @@ resources:
   # Flux-Kustomizations
   # - ./authelia/ks.yaml
   - ./lldap/ks.yaml
+  - ./smtp-relay/ks.yaml
