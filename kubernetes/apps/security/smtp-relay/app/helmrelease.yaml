@@ -67,7 +67,7 @@ spec:
       main:
         type: LoadBalancer
         annotations:
-          io.cilium/lb-ipam-ips: 192.168.50.123
+          io.cilium/lb-ipam-ips: 192.168.60.123
         ports:
           http:
             port: *metricsPort
